@@ -1,0 +1,13 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js && json-server db.json"
+  },
+  "author": "Jeanaica Suplido",
+  "devDependencies": {
+    "@faker-js/faker": "^6.3.1"
+  }
+}
