@@ -1,0 +1,25 @@
+{
+  "name": "meow-crud",
+  "version": "1.0.0",
+  "description": "CRUD of cats",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeanaica/meow-crud.git"
+  },
+  "keywords": [
+    "ReactJS",
+    "Tailwind",
+    "Jest",
+    "TypeScript",
+    "ESLint",
+    "Prettier"
+  ],
+  "author": "Jeanaica Suplido",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeanaica/meow-crud/issues"
+  },
+  "homepage": "https://github.com/jeanaica/meow-crud#readme"
+}
