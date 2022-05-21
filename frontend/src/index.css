@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+  font-family: 'learning-curve';
+  src: url('../public/fonts/learning-curve.ttf') format('truetype');
+}
