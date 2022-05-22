@@ -15,7 +15,8 @@ const generateCats = (num) => {
             owner: `${faker.name.firstName()} ${lastName}`,
             image: faker.image.cats(400, 400, true),
             gender: gender,
-            age: faker.datatype.number({ min: 1, max: 10})
+            age: faker.datatype.number({ min: 1, max: 10}),
+            active: faker.datatype.boolean()
         });
         num--;
     }
