@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import List from './views/List';
+import List from './views/list/List';
 
 const Cats: FC = () => {
   return (

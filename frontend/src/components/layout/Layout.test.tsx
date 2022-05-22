@@ -17,6 +17,6 @@ describe('Layout component', () => {
   test('it renders Footer', () => {
     const { container } = render(<Layout />);
 
-    expect(container.firstChild?.lastChild).toHaveClass('bg-secondary-200');
+    expect(container.firstChild?.lastChild).toHaveClass('bg-accent-500 p-4');
   });
 });
