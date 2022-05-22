@@ -12,4 +12,11 @@ const useCatsQuery = ({
   return useQuery(queryKey, () => CatsAPI.get({ name, active }));
 };
 
-export default useCatsQuery;
+const useCatQuery = ({
+  id,
+}: ApiParams): QueryObserverResult<Animal, ApiError> => {
+  const queryKey = ['retrieveCat', id];
+  return useQuery(queryKey, () => CatsAPI.getId({ id }));
+};
+
+export { useCatsQuery, useCatQuery };

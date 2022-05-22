@@ -6,6 +6,7 @@ type Animal = {
   gender: string;
   breed: string;
   image: string;
+  description: string;
   active: boolean;
 };
 

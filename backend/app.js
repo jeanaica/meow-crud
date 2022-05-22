@@ -16,6 +16,7 @@ const generateCats = (num) => {
             image: faker.image.cats(400, 400, true),
             gender: gender,
             age: faker.datatype.number({ min: 1, max: 10}),
+            description: faker.lorem.paragraph(5),
             active: faker.datatype.boolean()
         });
         num--;

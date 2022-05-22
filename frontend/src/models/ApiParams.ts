@@ -1,4 +1,5 @@
 interface ApiParams {
+  id?: string;
   name?: string;
   active?: boolean;
 }
