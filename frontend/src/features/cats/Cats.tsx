@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import List from './views/list/List';
+import List from './list/List';
+import View from './view/View';
 
 const Cats: FC = () => {
   return (
@@ -8,6 +9,10 @@ const Cats: FC = () => {
       <Route
         path='/'
         element={<List />}
+      />
+      <Route
+        path='/:id'
+        element={<View />}
       />
       <Route
         path='/add'
