@@ -6,6 +6,7 @@ type Animal = {
   gender: string;
   breed: string;
   image: string;
+  active: boolean;
 };
 
 export default Animal;

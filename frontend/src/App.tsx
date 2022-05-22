@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './components/layout/Layout';
-import List from './features/list/List';
+import Cats from './features/cats/Cats';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,20 +18,12 @@ const App = () => {
       <Routes>
         <Route element={<Layout />}>
           <Route
+            path='/cats/*'
+            element={<Cats />}
+          />
+          <Route
             path='/'
-            element={<List />}
-          />
-          <Route
-            path='/list'
-            element={<Navigate to='/' />}
-          />
-          <Route
-            path='add'
-            element={<div>Add</div>}
-          />
-          <Route
-            path='edit'
-            element={<div>Edit</div>}
+            element={<Navigate to='/cats' />}
           />
         </Route>
       </Routes>
