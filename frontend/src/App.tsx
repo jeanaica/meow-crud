@@ -21,7 +21,6 @@ const App = () => {
             path='/'
             element={<List />}
           />
-
           <Route
             path='/list'
             element={<Navigate to='/' />}

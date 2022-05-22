@@ -2,6 +2,7 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     colors: {
+      white: '#fff',
       accent: {
         DEFAULT: '#f9cfbc',
         100: '#fdf1eb',
@@ -35,6 +36,7 @@ module.exports = {
       typography: theme => ({
         DEFAULT: {
           css: {
+            maxWidth: 'none',
             color: theme.primary,
             a: {
               color: theme.secondary,
@@ -47,10 +49,11 @@ module.exports = {
       }),
       fontFamily: {
         sans: ['"Roboto Flex"', 'sans-serif'],
-        heading: ['learning-curve', 'sans-serif'],
+        heading: ['"Learning Curve"', 'cursive'],
+        'indie-flower': ['"Indie Flower"', 'cursive'],
       },
       borderColor: {
-        DEFAULT: '#707070',
+        DEFAULT: '#cecbd2',
       },
     },
   },
