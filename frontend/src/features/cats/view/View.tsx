@@ -48,53 +48,54 @@ const View = () => {
               src={data?.image || `${process.env.PUBLIC_URL}/default.jpeg`}
               alt={data?.name}
             />
-            <div className='flex flex-col px-6'>
-              <div className='flex justify-between pb-4'>
+            <div className='flex flex-col px-6 w-full sm:max-w-lg lg:pl-8 lg:pr-0'>
+              <div className='flex justify-end pb-4'>
+                <Button
+                  outlined
+                  className='mr-4'
+                  onClick={handleDeleteCat}
+                  disabled={isLoading}
+                  isLoading={isLoading}>
+                  <span className='material-icons-outlined'>delete</span>
+                  DELETE
+                </Button>
+                <Button
+                  outlined
+                  onClick={() => navigate('edit', { replace: true })}>
+                  <span className='material-icons-outlined'>edit</span>
+                  EDIT
+                </Button>
+              </div>
+              {hasError && (
+                <Alert message='Something went wrong. Please try again.' />
+              )}
+
+              <div className='flex justify-between p-4'>
+                <div className='flex flex-col'>
+                  <div className='font-semibold text-xl mb-2'>{data?.name}</div>
+                  <div className='font-semibold text-secondary-300 italic text-md mb-2'>
+                    {`${data?.age}, ${data?.breed}`}
+                  </div>
+                </div>
+
                 <Switch
                   id='active'
                   label='Active'
                   value={data?.active}
                   readOnly
                 />
-                <div className='flex'>
-                  <Button
-                    outlined
-                    className='mr-4'
-                    onClick={handleDeleteCat}
-                    disabled={isLoading}
-                    isLoading={isLoading}>
-                    <span className='material-icons-outlined'>delete</span>
-                    DELETE
-                  </Button>
-                  <Button
-                    outlined
-                    onClick={() => navigate('edit', { replace: true })}>
-                    <span className='material-icons-outlined'>edit</span>
-                    EDIT
-                  </Button>
-                </div>
-              </div>
-              {hasError && (
-                <Alert message='Something went wrong. Please try again.' />
-              )}
-
-              <div className='flex justify-between py-4'>
-                <div className='font-semibold text-xl mb-2'>{data?.name}</div>
-                <div className='font-semibold text-secondary-300 italic text-md mb-2'>
-                  {`${data?.age}, ${data?.breed}`}
-                </div>
               </div>
               <div className='flex border-b p-4 items-center'>
-                <span className='flex-1 text-secondary-300 text-sm italic font-semibold'>
+                <span className='flex-1 text-secondary-300 text-sm italic font-semibold mr-4'>
                   description:
                 </span>
                 <p className='flex-[2] text-primary-700 text-base text-justify'>
                   {data?.description}
                 </p>
               </div>
-              <div className='flex border-b p-4 items-end'>
+              <div className='flex border-b p-4 items-end mb-8'>
                 <span className='flex-1 text-secondary-300 text-sm italic font-semibold mr-4'>
-                  Owner:
+                  owner:
                 </span>
                 <span className='flex-[2] text-primary-700  text-base'>
                   {data?.owner}
