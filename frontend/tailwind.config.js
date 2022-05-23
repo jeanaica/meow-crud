@@ -31,6 +31,14 @@ module.exports = {
         400: '#4c4c4c',
         500: '#333333',
       },
+      error: {
+        DEFAULT: '#B00020',
+        100: '#efccd2',
+        200: '#d88090',
+        300: '#c0334d',
+        400: '#9e001d',
+        500: '#7b0016',
+      },
     },
     extend: {
       typography: theme => ({

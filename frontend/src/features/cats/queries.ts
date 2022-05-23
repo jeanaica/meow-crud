@@ -1,15 +1,26 @@
-import { QueryObserverResult, useQuery } from 'react-query';
+import { QueryObserverResult, useQuery, UseQueryOptions } from 'react-query';
 import { ApiError } from 'models/ApiError';
 import ApiParams from 'models/ApiParams';
 import Animal from 'models/Animal';
 import CatsAPI from './api';
 
-const useCatsQuery = ({
-  name = '',
-  active,
-}: ApiParams): QueryObserverResult<Animal[], ApiError> => {
+const useCatsQuery = (
+  { name = '', active }: ApiParams,
+  queryOptions?: Omit<
+    UseQueryOptions<
+      Animal[],
+      ApiError,
+      Animal[],
+      (string | boolean | undefined)[]
+    >,
+    'queryKey' | 'queryFn'
+  >
+): QueryObserverResult<Animal[], ApiError> => {
   const queryKey = ['retrieveCats', name, active];
-  return useQuery(queryKey, () => CatsAPI.get({ name, active }));
+
+  return useQuery(queryKey, () => CatsAPI.get({ name, active }), {
+    ...queryOptions,
+  });
 };
 
 const useCatQuery = ({

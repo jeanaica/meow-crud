@@ -1,15 +1,15 @@
 import classNames from 'classnames';
-import { Dispatch, SetStateAction, FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 
 type Props = {
   id: string;
   value: boolean;
-  onChange: Dispatch<SetStateAction<boolean>>;
+  onChange(e: ChangeEvent<HTMLInputElement>): void;
 };
 
 const Checkbox: FC<Props> = ({ id, value, onChange }) => {
-  const handleToggle = () => {
-    onChange(!value);
+  const handleToggle = (e: ChangeEvent<HTMLInputElement>) => {
+    onChange(e);
   };
 
   return (

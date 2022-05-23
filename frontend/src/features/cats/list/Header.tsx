@@ -3,24 +3,31 @@ import Search from 'components/search/Search';
 import { Dispatch, FC, SetStateAction } from 'react';
 import Checkbox from 'components/form/checkbox/Checkbox';
 import Button from 'components/button/Button';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   searchString: string;
   active: boolean;
   selectedAll: boolean;
+  isLoading: boolean;
   onSearch: Dispatch<SetStateAction<string>>;
   onActive: Dispatch<SetStateAction<boolean>>;
   onSelectAll(): void;
+  onDeleteAll(): void;
 };
 
 const Header: FC<Props> = ({
   searchString,
   active,
   selectedAll,
+  isLoading,
   onSearch,
   onActive,
   onSelectAll,
+  onDeleteAll,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <div className='p-4 md:border rounded'>
       <div className='flex'>
@@ -39,13 +46,21 @@ const Header: FC<Props> = ({
       </div>
       <div className='flex pt-4 pl-4'>
         <div className='flex flex-col flex-[4] md:flex-[10]'>
-          <span className='font-semibold text-sm mb-4'>Bulk Actions</span>
-          <div className='sm:ml-8'>
+          <span className='font-semibold text-sm mb-4'>Actions</span>
+          <div className='sm:ml-8 flex '>
             <Button
               outlined
-              onClick={() => console.log('clicked')}>
+              onClick={() => navigate('add', { replace: true })}
+              className='mr-4'>
+              <span className='material-icons-outlined mr-2'>add</span>
+              Add
+            </Button>
+            <Button
+              outlined
+              onClick={onDeleteAll}
+              isLoading={isLoading}>
               <span className='material-icons-outlined mr-2'>delete</span>
-              Delete
+              Delete Selected
             </Button>
           </div>
         </div>

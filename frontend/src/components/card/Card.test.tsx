@@ -16,10 +16,12 @@ describe('Card component', () => {
           image: 'test.png',
           name: 'Agustina Keefe',
           owner: 'Shanie Keefe',
+          description: 'Lorem Ipsum Dolor',
           active: false,
         }}
         selected={false}
         onSelect={jest.fn}
+        onClick={jest.fn}
       />
     );
 

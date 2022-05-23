@@ -17,4 +17,14 @@ const useCatDeleteMutation = (id?: string) => {
   });
 };
 
-export { useCatDeleteMutation };
+const useCatsDeleteMutation = () => {
+  return useMutation(async (formData: string[]) => {
+    const delArray = formData.map(id => CatsAPI.deleteId(id));
+
+    const res = await Promise.all(delArray);
+
+    return res;
+  });
+};
+
+export { useCatDeleteMutation, useCatsDeleteMutation };
