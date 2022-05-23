@@ -2,6 +2,7 @@ import { QueryObserverResult, useQuery, UseQueryOptions } from 'react-query';
 import { ApiError } from 'models/ApiError';
 import ApiParams from 'models/ApiParams';
 import Animal from 'models/Animal';
+import Breed from 'models/Breed';
 import CatsAPI from './api';
 
 const useCatsQuery = (
@@ -30,4 +31,9 @@ const useCatQuery = ({
   return useQuery(queryKey, () => CatsAPI.getId({ id }));
 };
 
-export { useCatsQuery, useCatQuery };
+const useCatBreedsQuery = (): QueryObserverResult<Array<Breed>, ApiError> => {
+  const queryKey = ['retrieveBreeds'];
+  return useQuery(queryKey, () => CatsAPI.getCatBreeds());
+};
+
+export { useCatsQuery, useCatQuery, useCatBreedsQuery };

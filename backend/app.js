@@ -25,7 +25,28 @@ const generateCats = (num) => {
     return cats;
 }
 
+const generateCatBreeds = (num) => {
+    const breeds = [];
+    
+    while (num >= 0) {
+        const breed = faker.animal.cat()
+
+        if (!breeds.includes(breed)) {
+            breeds.push({
+                category: 'cat',
+                name: breed
+            });
+            num--;
+        }
+    }
+
+    return breeds;
+}
+
 fs.writeFileSync(
     "./db.json",
-    JSON.stringify({ cats: generateCats(20) })
+    JSON.stringify({ 
+        cats: generateCats(20),
+        breeds: generateCatBreeds(25)
+    })
 );
