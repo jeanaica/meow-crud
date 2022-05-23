@@ -1,14 +1,8 @@
-import Alert from 'components/alert/Alert';
 import Button from 'components/button/Button';
 import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import {
-  useForm,
-  SubmitHandler,
-  FormProvider,
-  useFormState,
-} from 'react-hook-form';
+import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import Input from 'components/form/input/Input';
 import TextArea from 'components/form/textarea/TextArea';
 import { useCatMutation } from '../mutations';
@@ -16,6 +10,7 @@ import Toggle from 'components/form/toggle/Toggle';
 import Dropdown from 'components/form/select/Select';
 import { useCatBreedsQuery } from '../queries';
 import { useMemo } from 'react';
+import useToast from 'components/toast/hook';
 
 interface FormValues {
   name: string;
@@ -34,6 +29,7 @@ const schema = z.object({
   age: z.string().regex(REG_EXP).min(1, { message: 'Required' }).max(2),
   breed: z.string().min(1, { message: 'Required' }),
   description: z.string().min(1, { message: 'Required' }),
+  image: z.string().nullable(),
   owner: z.string().min(1, { message: 'Required' }),
   active: z.boolean({
     required_error: 'Active is required',
@@ -42,29 +38,34 @@ const schema = z.object({
 
 const Add = () => {
   const navigate = useNavigate();
+  const toast = useToast(2000);
 
-  const { isLoading, mutate, isError } = useCatMutation();
+  const { isLoading, mutate } = useCatMutation();
   const { isFetching, data, isError: isBreedsError } = useCatBreedsQuery();
 
   const methods = useForm<FormValues>({
     resolver: zodResolver(schema),
   });
-  const { handleSubmit, reset, control } = methods;
-
-  const { isDirty } = useFormState({
-    control,
-  });
+  const { handleSubmit, reset } = methods;
 
   const onSubmit: SubmitHandler<FormValues> = data => {
-    mutate(data, {
-      onSuccess: () => {
-        navigate('/', { replace: true });
-        reset();
+    mutate(
+      {
+        ...data,
+        age: Number(data.age),
       },
-      onError: () => {
-        reset({}, { keepValues: true });
-      },
-    });
+      {
+        onSuccess: () => {
+          navigate('/', { replace: true });
+          toast('success', 'You have successfully saved the record');
+          reset();
+        },
+        onError: () => {
+          toast('error', 'Something went wrong, Please try again.');
+          reset({}, { keepValues: true });
+        },
+      }
+    );
   };
 
   const options = useMemo(() => {
@@ -76,9 +77,6 @@ const Add = () => {
 
   return (
     <div className='flex justify-center p-4 sm:p-6 flex-col items-center'>
-      {isError && !isDirty && (
-        <Alert message='Something went wrong. Please try again.' />
-      )}
       <FormProvider {...methods}>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -106,7 +104,7 @@ const Add = () => {
             name='breed'
             options={options}
             isLoading={isFetching}
-            disabled={isBreedsError}
+            disabled={isFetching || isBreedsError}
           />
           <Input
             label='Image'

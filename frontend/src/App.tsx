@@ -1,3 +1,5 @@
+import { ToastProvider } from 'components/toast/context';
+import ToastContainer from 'components/toast/ToastContainer';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './components/layout/Layout';
@@ -15,18 +17,21 @@ export const queryClient = new QueryClient({
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route
-            path='/cats/*'
-            element={<Cats />}
-          />
-          <Route
-            path='/'
-            element={<Navigate to='/cats' />}
-          />
-        </Route>
-      </Routes>
+      <ToastProvider>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route
+              path='/cats/*'
+              element={<Cats />}
+            />
+            <Route
+              path='/'
+              element={<Navigate to='/cats' />}
+            />
+          </Route>
+        </Routes>
+        <ToastContainer />
+      </ToastProvider>
     </QueryClientProvider>
   );
 };
