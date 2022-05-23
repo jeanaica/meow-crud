@@ -5,18 +5,24 @@ type Props = {
   label: string;
   id: string;
   value?: boolean;
-  onChange: Dispatch<SetStateAction<boolean>>;
+  readOnly?: boolean;
+  onChange?: Dispatch<SetStateAction<boolean>>;
 };
 
-const Switch: FC<Props> = ({ id, label, value, onChange }) => {
+const Switch: FC<Props> = ({ id, label, value, readOnly, onChange }) => {
   const handleToggle = () => {
-    onChange(!value);
+    if (onChange) {
+      onChange(!value);
+    }
   };
 
   return (
     <label
       htmlFor={id}
-      className='flex items-center cursor-pointer'>
+      className={classNames('flex items-center', {
+        'cursor-pointer': !readOnly,
+        'cursor-not-allowed': readOnly,
+      })}>
       <div className='relative'>
         <input
           id={id}
@@ -32,6 +38,7 @@ const Switch: FC<Props> = ({ id, label, value, onChange }) => {
             {
               'bg-accent-100': !value,
               'bg-accent translate-x-full': value,
+              'cursor-not-allowed': readOnly,
             }
           )}></div>
       </div>
