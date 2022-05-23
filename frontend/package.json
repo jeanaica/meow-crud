@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@hookform/resolvers": "^2.8.10",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
@@ -15,11 +16,14 @@
     "material-icons": "^1.10.11",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-hook-form": "^7.31.2",
     "react-query": "^3.39.0",
     "react-router-dom": "6",
     "react-scripts": "5.0.1",
+    "react-select": "^5.3.2",
     "typescript": "^4.6.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zod": "^3.17.2"
   },
   "scripts": {
     "start": "react-scripts start",

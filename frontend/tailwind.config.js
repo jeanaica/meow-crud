@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     colors: {
       white: '#fff',
+      transparent: 'transparent',
       accent: {
         DEFAULT: '#f9cfbc',
         100: '#fdf1eb',
