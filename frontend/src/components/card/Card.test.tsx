@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { BrowserRouter } from 'react-router-dom';
 import Card from './Card';
 
 describe('Card component', () => {
@@ -7,22 +7,23 @@ describe('Card component', () => {
 
   test('it renders', async () => {
     render(
-      <Card
-        animal={{
-          id: 20,
-          age: 7,
-          breed: 'Egyptian Mau',
-          gender: 'Female',
-          image: 'test.png',
-          name: 'Agustina Keefe',
-          owner: 'Shanie Keefe',
-          description: 'Lorem Ipsum Dolor',
-          active: false,
-        }}
-        selected={false}
-        onSelect={jest.fn}
-        onClick={jest.fn}
-      />
+      <BrowserRouter>
+        <Card
+          animal={{
+            id: 20,
+            age: 7,
+            breed: 'Egyptian Mau',
+            image: 'test.png',
+            name: 'Agustina Keefe',
+            owner: 'Shanie Keefe',
+            description: 'Lorem Ipsum Dolor',
+            active: false,
+          }}
+          selected={false}
+          onSelect={jest.fn}
+          onClick={jest.fn}
+        />
+      </BrowserRouter>
     );
 
     expect(screen.getByText('Egyptian Mau')).toBeVisible();
