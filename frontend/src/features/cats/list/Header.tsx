@@ -1,7 +1,7 @@
-import Switch from 'components/form/switch/Switch';
+import Switch from 'components/switch/Switch';
 import Search from 'components/search/Search';
 import { Dispatch, FC, SetStateAction } from 'react';
-import Checkbox from 'components/form/checkbox/Checkbox';
+import Checkbox from 'components/checkbox/Checkbox';
 import Button from 'components/button/Button';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,5 +1,8 @@
 import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
+
+import Add from './add/Add';
+import Edit from './edit/Edit';
 import List from './list/List';
 import View from './view/View';
 
@@ -16,11 +19,11 @@ const Cats: FC = () => {
       />
       <Route
         path='/add'
-        element={<div>add</div>}
+        element={<Add />}
       />
       <Route
         path='/:id/edit'
-        element={<div>edit</div>}
+        element={<Edit />}
       />
     </Routes>
   );

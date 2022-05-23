@@ -1,6 +1,7 @@
-import { ChangeEvent, FC, MouseEvent } from 'react';
+import { ChangeEvent, FC } from 'react';
 import Animal from 'models/Animal';
-import Checkbox from 'components/form/checkbox/Checkbox';
+import Checkbox from 'components/checkbox/Checkbox';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   animal: Animal;
@@ -11,6 +12,7 @@ type Props = {
 
 const Card: FC<Props> = ({ animal, selected, onSelect, onClick }) => {
   const { id, image, name, breed } = animal;
+  const navigate = useNavigate();
 
   const handleClick = () => {
     onClick();
@@ -32,7 +34,7 @@ const Card: FC<Props> = ({ animal, selected, onSelect, onClick }) => {
         role='button'
         onClick={handleClick}>
         <img
-          src={image}
+          src={image || `${process.env.PUBLIC_URL}/default.jpeg`}
           className='rounded-full h-16 my-0 mr-4'
         />
         <div>
@@ -42,7 +44,9 @@ const Card: FC<Props> = ({ animal, selected, onSelect, onClick }) => {
         </div>
       </div>
       <div className='flex flex-1'>
-        <button className='hover:text-primary-300 mr-2'>
+        <button
+          className='hover:text-primary-300 mr-2'
+          onClick={() => navigate(`${id}/edit`, { replace: true })}>
           <span className='material-icons-outlined'>edit</span>
         </button>
         <div className='w-5'>
