@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
     cats.push({ ...data, id });
   });
 
-  res.status(200).send(JSON.stringify(cats));
+  res.status(200).send(cats);
 });
 
 router.get("/:id", async (req, res) => {
@@ -26,12 +26,10 @@ router.get("/:id", async (req, res) => {
   const catId = snapshot.id;
   const catsData = snapshot.data();
 
-  res.status(200).send(
-    JSON.stringify({
-      ...catsData,
-      id: catId,
-    })
-  );
+  res.status(200).send({
+    ...catsData,
+    id: catId,
+  });
 });
 
 router.put("/:id", async (req, res) => {
@@ -43,12 +41,10 @@ router.put("/:id", async (req, res) => {
       .doc(req.params.id)
       .update({ ...body });
 
-    res.status(200).send(
-      JSON.stringify({
-        id: req.params.id,
-        ...body,
-      })
-    );
+    res.status(200).send({
+      id: req.params.id,
+      ...body,
+    });
   } catch (error) {
     res.status(400).send(error);
   }
