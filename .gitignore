@@ -1,0 +1,8 @@
+.env
+
+.firebase
+.firebaserc
+
+node_modules
+
+scripts/

@@ -2,8 +2,7 @@
   "name": "meow-crud",
   "version": "1.0.0",
   "description": "CRUD of cats",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jeanaica/meow-crud.git"
@@ -21,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/jeanaica/meow-crud/issues"
   },
-  "homepage": "https://github.com/jeanaica/meow-crud#readme"
+  "homepage": "https://github.com/jeanaica/meow-crud#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "firebase": "^9.8.1"
+  },
+  "devDependencies": {
+    "firestore-export-import": "^1.1.0"
+  }
 }
