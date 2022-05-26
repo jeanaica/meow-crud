@@ -2,7 +2,7 @@ import instance from 'api/instance';
 import Animal from 'models/Animal';
 import ApiParams from 'models/ApiParams';
 
-const get = async ({ name, active }: ApiParams) => {
+const getAll = async ({ name, active }: ApiParams) => {
   const { data } = await instance.get('/cats', {
     params: {
       name_like: name,
@@ -13,7 +13,7 @@ const get = async ({ name, active }: ApiParams) => {
   return data;
 };
 
-const getId = async ({ id }: ApiParams) => {
+const get = async ({ id }: ApiParams) => {
   const { data } = await instance.get('/cats', {
     params: {
       id,
@@ -69,7 +69,9 @@ const update = async ({
 };
 
 const deleteId = async (id?: string) => {
-  return await instance.delete(`/cats/${id}`);
+  const resp = await instance.delete(`/cats/${id}`);
+
+  return resp.data;
 };
 
 /* ============== CAT BREEDS ==================== */
@@ -86,7 +88,7 @@ const getCatBreeds = async () => {
 
 export default {
   get,
-  getId,
+  getAll,
   deleteId,
   post,
   update,
