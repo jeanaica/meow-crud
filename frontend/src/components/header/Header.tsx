@@ -16,7 +16,7 @@ const Header: FC = () => {
           <span className='material-icons-outlined'>arrow_back</span>
         </Button>
       )}
-      <h1 className='mb-0 flex-[4]'>Cat Directory</h1>
+      <h1 className='mb-0 flex-[4] text-center'>Cat Directory</h1>
     </div>
   );
 };
