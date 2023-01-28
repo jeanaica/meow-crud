@@ -19,7 +19,7 @@ const useCatsQuery = (
 ): QueryObserverResult<Animal[], ApiError> => {
   const queryKey = ['retrieveCats', name, active];
 
-  return useQuery(queryKey, () => CatsAPI.get({ name, active }), {
+  return useQuery(queryKey, () => CatsAPI.getAll({ name, active }), {
     ...queryOptions,
   });
 };

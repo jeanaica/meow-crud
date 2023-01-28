@@ -6,7 +6,7 @@ const getAll = async ({ name, active }: ApiParams) => {
   const { data } = await instance.get('/cats', {
     params: {
       name_like: name,
-      active: active ? true : undefined,
+      active: active,
     },
   });
 
