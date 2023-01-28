@@ -85,7 +85,7 @@ const View = () => {
                   readOnly
                 />
               </div>
-              <div className='flex border-b p-4 items-center'>
+              <div className='flex flex-col items-start border-b p-4 sm:items-center sm:flex-row'>
                 <span className='flex-1 text-secondary-300 text-sm italic font-semibold mr-4'>
                   description:
                 </span>
