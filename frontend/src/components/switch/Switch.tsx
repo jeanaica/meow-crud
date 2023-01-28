@@ -19,10 +19,11 @@ const Switch: FC<Props> = ({ id, label, value, readOnly, onChange }) => {
   return (
     <label
       htmlFor={id}
-      className={classNames('flex items-center', {
+      className={classNames('flex flex-col items-center ml-3', {
         'cursor-pointer': !readOnly,
         'cursor-not-allowed': readOnly,
       })}>
+      <div className='text-sm font-medium'>{label}</div>
       <div className='relative'>
         <input
           id={id}
@@ -42,7 +43,6 @@ const Switch: FC<Props> = ({ id, label, value, readOnly, onChange }) => {
             }
           )}></div>
       </div>
-      <div className='ml-3 font-medium'>{label}</div>
     </label>
   );
 };

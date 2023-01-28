@@ -19,8 +19,8 @@ const Toggle: FC<Props> = ({ name, label }) => {
   return (
     <label
       htmlFor={name}
-      className='flex items-center cursor-pointer'>
-      <div className='mr-3 font-medium'>{label}</div>
+      className='flex flex-col items-center cursor-pointer'>
+      <div className='text-sm font-medium'>{label}</div>
       <div className='relative'>
         <input
           {...register(name)}
@@ -29,13 +29,13 @@ const Toggle: FC<Props> = ({ name, label }) => {
           type='checkbox'
           className='sr-only'
         />
-        <div className='block w-14 h-8 bg-primary-400 rounded-full'></div>
+        <div className='block w-14 h-8 bg-slate-300 rounded-full'></div>
         <div
           className={classNames(
             'dot absolute left-1 top-1 w-6 h-6 rounded-full transition',
             {
               'bg-accent-100': !fieldValue,
-              'bg-accent translate-x-full': fieldValue,
+              'bg-green-500 translate-x-full': fieldValue,
             }
           )}></div>
       </div>

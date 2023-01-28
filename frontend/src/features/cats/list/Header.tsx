@@ -31,17 +31,22 @@ const Header: FC<Props> = ({
   return (
     <div className='p-4 md:border rounded'>
       <div className='flex'>
-        <Switch
-          id='active'
-          label='Active'
-          value={active}
-          onChange={onActive}
-        />
-        <div className='flex-1 ml-4 md:ml-12'>
-          <Search
-            value={searchString}
-            onChange={onSearch}
-          />
+        <div className='flex flex-col flex-[4] md:flex-[10]'>
+          <span className='font-semibold text-sm pl-4'>Filter</span>
+          <div className='flex p-4 border-b pb-8'>
+            <Switch
+              id='active'
+              label='Active'
+              value={active}
+              onChange={onActive}
+            />
+            <div className='flex-1 ml-4 mt-4 md:ml-12'>
+              <Search
+                value={searchString}
+                onChange={onSearch}
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div className='flex pt-4 pl-4'>
